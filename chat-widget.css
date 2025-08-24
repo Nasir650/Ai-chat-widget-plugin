@@ -1,0 +1,1976 @@
+/* Modern Glassmorphism Chat Widget CSS */
+
+/* Chat Container */
+.omion-chat-widget-container {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 999999 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Chat Button - Modern Glassmorphism */
+.omion-chat-widget-button {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.omion-chat-widget-button::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.6s !important;
+}
+
+.omion-chat-widget-button:hover {
+    transform: scale(1.1) translateY(-2px) !important;
+    box-shadow: 
+        0 12px 40px rgba(31, 38, 135, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.omion-chat-widget-button:hover::before {
+    transform: translateX(100%) !important;
+}
+
+.omion-chat-widget-button:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s !important;
+}
+
+/* Chat Window - Glassmorphism */
+.omion-chat-widget-window {
+    position: absolute !important;
+    bottom: 80px !important;
+    right: 0 !important;
+    width: 380px !important;
+    height: 500px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 24px !important;
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.37),
+        0 15px 60px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    display: none;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    animation: chatSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@keyframes chatSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header - Glassmorphism */
+.omion-chat-header {
+    padding: 20px 24px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 60px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.omion-chat-header::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    animation: shimmer 3s infinite !important;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.omion-chat-header h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: white !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    letter-spacing: 0.5px !important;
+}
+
+.omion-chat-close {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    width: 36px !important;
+    height: 36px !important;
+    color: white !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.omion-chat-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: rotate(90deg) scale(1.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Messages Area - Modern Scrolling */
+.omion-chat-messages {
+    flex: 1 !important;
+    height: calc(100% - 200px) !important;
+    overflow-y: scroll !important;
+    padding: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.9)) !important;
+    backdrop-filter: blur(10px) !important;
+    position: relative !important;
+}
+
+/* Custom Scrollbar */
+.omion-chat-messages::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.omion-chat-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+.omion-chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5)) !important;
+    border-radius: 10px !important;
+    transition: background 0.3s ease !important;
+}
+
+.omion-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8)) !important;
+}
+
+/* Welcome Message - Enhanced */
+.omion-welcome-message {
+    text-align: center !important;
+    color: #4a5568 !important;
+    font-size: 15px !important;
+    margin: 20px 0 !important;
+    padding: 16px 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    animation: welcomePulse 2s ease-in-out infinite !important;
+}
+
+@keyframes welcomePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Message Bubbles - Glassmorphism */
+.omion-message {
+    max-width: 85% !important;
+    padding: 16px 20px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    word-wrap: break-word !important;
+    margin: 8px 0 !important;
+    position: relative !important;
+    animation: messageSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.omion-message.user {
+    align-self: flex-end !important;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.9)) !important;
+    color: white !important;
+    border-bottom-right-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+}
+
+.omion-message.bot {
+    align-self: flex-start !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #2d3748 !important;
+    border-bottom-left-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Quick Questions - Modern Design */
+.omion-quick-questions {
+    padding: 16px !important;
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+.omion-quick-questions::-webkit-scrollbar {
+    display: none !important;
+}
+
+.omion-quick-question {
+    padding: 12px 18px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8)) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px !important;
+    font-size: 13px !important;
+    color: #4a5568 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-weight: 500 !important;
+}
+
+.omion-quick-question:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1)) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15) !important;
+    color: #1e40af !important;
+}
+
+.omion-quick-question:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+/* Input Area - Glassmorphism */
+.omion-chat-input-container {
+    padding: 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    min-height: 80px !important;
+}
+
+.omion-chat-input-wrapper {
+    display: flex !important;
+    gap: 12px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 24px !important;
+    padding: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.omion-chat-input-wrapper:focus-within {
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.omion-chat-input {
+    flex: 1 !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0px 16px !important;
+    font-size: 14px !important;
+    outline: none !important;
+    min-height: 44px !important;
+    line-height: 20px !important;
+    font-weight: 400 !important;
+    color: #2d3748 !important;
+}
+
+.omion-chat-input::placeholder {
+    color: #a0aec0 !important;
+    transition: color 0.3s ease !important;
+}
+
+.omion-chat-input:focus::placeholder {
+    color: #cbd5e0 !important;
+}
+
+.omion-chat-send {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 0 !important;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.9)) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3) !important;
+}
+
+.omion-chat-send:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4) !important;
+}
+
+.omion-chat-send:active {
+    transform: scale(0.95) !important;
+}
+
+/* Custom Buttons - Enhanced */
+.omion-custom-buttons {
+    padding: 16px !important;
+    display: flex !important;
+    gap: 12px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.omion-custom-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 12px 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8)) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #4a5568 !important;
+    text-decoration: none !important;
+    border-radius: 24px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-align: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    cursor: pointer !important;
+    flex: 1 !important;
+    min-width: 110px !important;
+    max-width: 160px !important;
+}
+
+.omion-custom-button:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1)) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: #1e40af !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* WhatsApp Button - Special Styling */
+.omion-whatsapp-button {
+    background: linear-gradient(135deg, #25D366, #22c35e) !important;
+    color: white !important;
+}
+
+.omion-whatsapp-button:hover {
+    background: linear-gradient(135deg, #22c35e, #1ea952) !important;
+    color: white !important;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3) !important;
+}
+
+/* Inquiry Button */
+.omion-inquiry-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 24px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: 600 !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
+}
+
+.omion-inquiry-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4) !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .omion-chat-widget-window {
+        width: calc(100vw - 40px) !important;
+        right: 20px !important;
+        height: calc(100vh - 120px) !important;
+        border-radius: 20px !important;
+    }
+
+    .omion-chat-widget-button {
+        width: 56px !important;
+        height: 56px !important;
+    }
+
+    .omion-custom-buttons {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    .omion-custom-button {
+        max-width: none !important;
+        min-width: 100% !important;
+    }
+
+    .omion-chat-messages {
+        padding: 16px !important;
+        gap: 12px !important;
+    }
+
+    .omion-chat-header {
+        padding: 16px 20px !important;
+    }
+}
+
+/* Dark Mode Ready Variables */
+:root {
+    --glass-bg-light: rgba(255, 255, 255, 0.9);
+    --glass-bg-dark: rgba(0, 0, 0, 0.8);
+    --glass-border-light: rgba(255, 255, 255, 0.18);
+    --glass-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode + Typing Indicators CSS - ADD TO EXISTING CSS FILE */
+
+/* Dark Mode Styles */
+.omion-dark-mode .omion-chat-widget-window {
+    background: rgba(30, 30, 30, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-chat-header {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(30, 30, 30, 0.8)) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-chat-messages {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(35, 35, 35, 0.8)) !important;
+}
+
+.omion-dark-mode .omion-message.bot {
+    background: rgba(45, 45, 45, 0.9) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-message.user {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.9)) !important;
+}
+
+.omion-dark-mode .omion-welcome-message {
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.9), rgba(55, 55, 55, 0.8)) !important;
+    color: #cbd5e0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-quick-questions {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(35, 35, 35, 0.8)) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-quick-question {
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(55, 55, 55, 0.8)) !important;
+    color: #cbd5e0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-quick-question:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2)) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    color: #93c5fd !important;
+}
+
+.omion-dark-mode .omion-chat-input-container {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(35, 35, 35, 0.8)) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-chat-input-wrapper {
+    background: rgba(45, 45, 45, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-chat-input {
+    color: #e2e8f0 !important;
+}
+
+.omion-dark-mode .omion-chat-input::placeholder {
+    color: #64748b !important;
+}
+
+.omion-dark-mode .omion-custom-buttons {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(35, 35, 35, 0.8)) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-custom-button {
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(55, 55, 55, 0.8)) !important;
+    color: #cbd5e0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-custom-button:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2)) !important;
+    color: #93c5fd !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Dark Mode Toggle Button */
+#omionDarkModeToggle {
+    position: absolute !important;
+    top: 50% !important;
+    right: 63px !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.8 !important;
+}
+
+#omionDarkModeToggle:hover {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.omion-toggle-animate {
+    animation: toggleSpin 0.3s ease-in-out !important;
+}
+
+@keyframes toggleSpin {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(180deg); }
+}
+
+/* Enhanced Typing Indicators */
+.omion-typing-indicator {
+    animation: typingSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin: 8px 0 !important;
+}
+
+.omion-typing-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.omion-typing-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    flex-shrink: 0 !important;
+    animation: avatarPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.omion-typing-dots {
+    display: flex !important;
+    gap: 4px !important;
+    align-items: center !important;
+}
+
+.omion-typing-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #94a3b8 !important;
+    opacity: 0.4 !important;
+    transform: scale(0.8) !important;
+    transition: all 0.3s ease !important;
+}
+
+.omion-typing-dot-active {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    animation: typingBounce 1.4s ease-in-out infinite !important;
+}
+
+.omion-typing-dot:nth-child(2).omion-typing-dot-active {
+    animation-delay: 0.2s !important;
+}
+
+.omion-typing-dot:nth-child(3).omion-typing-dot-active {
+    animation-delay: 0.4s !important;
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: scale(1) translateY(0);
+    }
+    30% {
+        transform: scale(1.2) translateY(-4px);
+    }
+}
+
+.omion-typing-text {
+    font-size: 12px !important;
+    color: #64748b !important;
+    font-style: italic !important;
+    opacity: 0 !important;
+    animation: textFadeIn 0.5s ease 0.6s forwards !important;
+}
+
+@keyframes textFadeIn {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* User Typing Indicator in Header */
+.omion-chat-header h3.user-typing {
+    color: #93c5fd !important;
+    animation: headerTyping 1.5s ease-in-out infinite !important;
+}
+
+@keyframes headerTyping {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Message Timestamps */
+.omion-message-time {
+    font-size: 10px !important;
+    color: #64748b !important;
+    margin-top: 4px !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.omion-message:hover .omion-message-time {
+    opacity: 0.7 !important;
+}
+
+/* Message Reactions */
+.omion-message-reactions {
+    display: flex !important;
+    gap: 4px !important;
+    margin-top: 8px !important;
+    opacity: 0 !important;
+    transform: translateY(5px) !important;
+    transition: all 0.3s ease !important;
+}
+
+.omion-message:hover .omion-message-reactions {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.omion-reaction-btn {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    font-size: 12px !important;
+}
+
+.omion-reaction-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1) !important;
+}
+
+.omion-reaction-btn.omion-reaction-active {
+    background: rgba(59, 130, 246, 0.3) !important;
+    transform: scale(1.1) !important;
+}
+
+.omion-copy-btn svg {
+    width: 12px !important;
+    height: 12px !important;
+    stroke: currentColor !important;
+}
+
+.omion-copy-success {
+    background: rgba(34, 197, 94, 0.3) !important;
+    color: #22c55e !important;
+}
+
+/* Reaction Feedback */
+.omion-reaction-feedback {
+    text-align: center !important;
+    color: #64748b !important;
+    font-size: 12px !important;
+    font-style: italic !important;
+    margin: 8px 0 !important;
+    padding: 8px 16px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    animation: feedbackSlideIn 0.3s ease !important;
+}
+
+@keyframes feedbackSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Dark mode reactions */
+.omion-dark-mode .omion-reaction-feedback {
+    background: rgba(45, 45, 45, 0.8) !important;
+    color: #cbd5e0 !important;
+}
+
+.omion-dark-mode .omion-reaction-btn {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cbd5e0 !important;
+}
+
+.omion-dark-mode .omion-reaction-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-message-time {
+    color: #64748b !important;
+}
+
+.omion-dark-mode .omion-typing-text {
+    color: #94a3b8 !important;
+}
+
+/* Smooth theme transitions */
+.omion-chat-widget-container,
+.omion-chat-widget-container * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* Mobile responsiveness for new features */
+@media (max-width: 480px) {
+    #omionDarkModeToggle {
+        right: 45px !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .omion-typing-content {
+        gap: 8px !important;
+    }
+    
+    .omion-typing-avatar {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .omion-message-reactions {
+        gap: 6px !important;
+    }
+    
+    .omion-reaction-btn {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+/* Chat History + Sound Controls CSS - ADD TO EXISTING CSS FILE */
+
+/* Sound Toggle Button */
+#omionSoundToggle {
+    position: absolute !important;
+    top: 50% !important;
+    right: 98px !important;
+    transform: translateY(-50%) !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.8 !important;
+}
+
+#omionSoundToggle:hover {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* History Control Buttons */
+.omion-history-controls {
+    padding: 12px 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: center !important;
+}
+
+.omion-history-btn {
+    padding: 8px 16px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.8)) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 16px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #4a5568 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.omion-history-btn:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1)) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: #1e40af !important;
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15) !important;
+}
+
+.omion-history-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* Conversation History List */
+.omion-conversation-list {
+    margin: 16px 0 !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    overflow: hidden !important;
+    animation: historySlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@keyframes historySlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.omion-history-header {
+    padding: 16px 20px !important;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1)) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    color: #1e40af !important;
+    text-align: center !important;
+}
+
+.omion-conversation-item {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.omion-conversation-item:last-child {
+    border-bottom: none !important;
+}
+
+.omion-conversation-item:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(37, 99, 235, 0.05)) !important;
+    transform: translateX(4px) !important;
+}
+
+.omion-conversation-item.active {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1)) !important;
+    border-left: 3px solid #22c55e !important;
+}
+
+.omion-conversation-item.active::before {
+    content: '🟢' !important;
+    position: absolute !important;
+    left: 8px !important;
+    font-size: 8px !important;
+}
+
+.omion-conv-content {
+    flex: 1 !important;
+}
+
+.omion-conv-title {
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    color: #2d3748 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+}
+
+.omion-conv-date {
+    font-size: 11px !important;
+    color: #64748b !important;
+    opacity: 0.8 !important;
+}
+
+.omion-conv-delete {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+    color: #dc2626 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    opacity: 0.6 !important;
+}
+
+.omion-conv-delete:hover {
+    background: rgba(239, 68, 68, 0.2) !important;
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Conversation Restored Indicator */
+.omion-conversation-restored {
+    text-align: center !important;
+    color: #22c55e !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin: 12px 0 !important;
+    padding: 8px 16px !important;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1)) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(34, 197, 94, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    animation: restoreIndicator 0.5s ease !important;
+}
+
+@keyframes restoreIndicator {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.9);
+    }
+    50% {
+        transform: translateY(2px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.omion-conversation-restored svg {
+    width: 16px !important;
+    height: 16px !important;
+    animation: rotateRestore 1s ease-in-out !important;
+}
+
+@keyframes rotateRestore {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* System Messages */
+.omion-system-message {
+    text-align: center !important;
+    color: #64748b !important;
+    font-size: 13px !important;
+    font-style: italic !important;
+    margin: 12px 0 !important;
+    padding: 12px 16px !important;
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.1), rgba(100, 116, 139, 0.1)) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    animation: systemMessageSlide 0.4s ease !important;
+}
+
+@keyframes systemMessageSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.omion-system-message svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+/* Dark Mode History Styles */
+.omion-dark-mode .omion-history-controls {
+    background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(35, 35, 35, 0.8)) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-history-btn {
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(55, 55, 55, 0.8)) !important;
+    color: #cbd5e0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-history-btn:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2)) !important;
+    color: #93c5fd !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+.omion-dark-mode .omion-conversation-list {
+    background: linear-gradient(135deg, rgba(35, 35, 35, 0.9), rgba(45, 45, 45, 0.8)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-history-header {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2)) !important;
+    color: #93c5fd !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.omion-dark-mode .omion-conversation-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.omion-dark-mode .omion-conversation-item:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1)) !important;
+}
+
+.omion-dark-mode .omion-conv-title {
+    color: #e2e8f0 !important;
+}
+
+.omion-dark-mode .omion-conv-date {
+    color: #94a3b8 !important;
+}
+
+.omion-dark-mode .omion-conversation-restored {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.2)) !important;
+    border: 1px solid rgba(34, 197, 94, 0.3) !important;
+    color: #4ade80 !important;
+}
+
+.omion-dark-mode .omion-system-message {
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.1), rgba(100, 116, 139, 0.1)) !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important;
+    color: #94a3b8 !important;
+}
+
+/* Sound Effects Visual Feedback */
+.omion-sound-wave {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 2px solid rgba(59, 130, 246, 0.5) !important;
+    border-radius: 50% !important;
+    animation: soundWave 0.6s ease-out !important;
+    pointer-events: none !important;
+}
+
+@keyframes soundWave {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsiveness for History Features */
+@media (max-width: 480px) {
+    #omionSoundToggle {
+        right: 75px !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .omion-history-controls {
+        padding: 10px 16px !important;
+        gap: 6px !important;
+    }
+    
+    .omion-history-btn {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+    
+    .omion-conversation-item {
+        padding: 12px 16px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    
+    .omion-conv-delete {
+        position: absolute !important;
+        top: 12px !important;
+        right: 16px !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
+    
+    .omion-conversation-list {
+        margin: 12px 0 !important;
+    }
+    
+    .omion-history-header {
+        padding: 12px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* Conversation Counter Badge */
+.omion-conv-counter {
+    position: absolute !important;
+    top: -4px !important;
+    right: -4px !important;
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    color: white !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 2px 6px !important;
+    border-radius: 10px !important;
+    min-width: 16px !important;
+    text-align: center !important;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
+    animation: counterPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes counterPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Auto-save Indicator */
+.omion-autosave-indicator {
+    position: absolute !important;
+    bottom: 100px !important;
+    right: 20px !important;
+    background: rgba(34, 197, 94, 0.9) !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 12px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+    transition: all 0.3s ease !important;
+    pointer-events: none !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.omion-autosave-indicator.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.omion-autosave-indicator svg {
+    width: 12px !important;
+    height: 12px !important;
+    animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Lead Capture System CSS - ADD TO EXISTING CSS FILE */
+
+/* Email Capture Form */
+.omion-email-capture-form {
+    margin: 16px 0 !important;
+    padding: 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15) !important;
+    animation: captureSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    min-height:360px!important;
+}
+
+@keyframes captureSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.omion-email-capture-form::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent) !important;
+    animation: captureShimmer 2s infinite !important;
+}
+
+@keyframes captureShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.omion-capture-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    color: #4f46e5 !important;
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+.omion-capture-header svg {
+    width: 20px !important;
+    height: 20px !important;
+    stroke: #4f46e5 !important;
+}
+
+.omion-capture-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.omion-capture-input {
+    padding: 12px 16px !important;
+    border: 2px solid rgba(99, 102, 241, 0.2) !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+}
+
+.omion-capture-input:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.omion-capture-input::placeholder {
+    color: #64748b !important;
+}
+
+.omion-capture-buttons {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 8px !important;
+}
+
+.omion-capture-submit {
+    flex: 1 !important;
+    padding: 12px 20px !important;
+    background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.omion-capture-submit:hover {
+    background: linear-gradient(135deg, #4338ca, #4f46e5) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3) !important;
+}
+
+.omion-capture-submit:active {
+    transform: translateY(0) !important;
+}
+
+.omion-capture-skip {
+    padding: 12px 16px !important;
+    background: transparent !important;
+    color: #64748b !important;
+    border: 1px solid rgba(100, 116, 139, 0.3) !important;
+    border-radius: 12px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.omion-capture-skip:hover {
+    background: rgba(100, 116, 139, 0.1) !important;
+    color: #475569 !important;
+    border-color: rgba(100, 116, 139, 0.5) !important;
+}
+
+.omion-capture-privacy {
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid rgba(99, 102, 241, 0.1) !important;
+    font-size: 11px !important;
+    color: #64748b !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+}
+
+.omion-capture-privacy svg {
+    width: 12px !important;
+    height: 12px !important;
+    stroke: #64748b !important;
+}
+
+.omion-capture-error {
+    padding: 8px 12px !important;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1)) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    border-radius: 8px !important;
+    color: #dc2626 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    animation: errorShake 0.5s ease-in-out !important;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Dark Mode Lead Capture Styles */
+.omion-dark-mode .omion-email-capture-form {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(40, 40, 40, 0.95)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.3) !important;
+}
+
+.omion-dark-mode .omion-capture-header {
+    color: #8b5cf6 !important;
+}
+
+.omion-dark-mode .omion-capture-header svg {
+    stroke: #8b5cf6 !important;
+}
+
+.omion-dark-mode .omion-capture-input {
+    background: rgba(45, 45, 45, 0.8) !important;
+    border: 2px solid rgba(99, 102, 241, 0.3) !important;
+    color: #e2e8f0 !important;
+}
+
+.omion-dark-mode .omion-capture-input:focus {
+    background: rgba(45, 45, 45, 0.95) !important;
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+}
+
+.omion-dark-mode .omion-capture-input::placeholder {
+    color: #94a3b8 !important;
+}
+
+.omion-dark-mode .omion-capture-submit {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7) !important;
+}
+
+.omion-dark-mode .omion-capture-submit:hover {
+    background: linear-gradient(135deg, #7c3aed, #8b5cf6) !important;
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4) !important;
+}
+
+.omion-dark-mode .omion-capture-skip {
+    color: #94a3b8 !important;
+    border: 1px solid rgba(148, 163, 184, 0.3) !important;
+}
+
+.omion-dark-mode .omion-capture-skip:hover {
+    background: rgba(148, 163, 184, 0.1) !important;
+    color: #cbd5e0 !important;
+    border-color: rgba(148, 163, 184, 0.5) !important;
+}
+
+.omion-dark-mode .omion-capture-privacy {
+    border-top: 1px solid rgba(99, 102, 241, 0.2) !important;
+    color: #94a3b8 !important;
+}
+
+.omion-dark-mode .omion-capture-privacy svg {
+    stroke: #94a3b8 !important;
+}
+
+/* Lead Score Indicator */
+.omion-lead-score-indicator {
+    position: absolute !important;
+    top: -8px !important;
+    right: -8px !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3) !important;
+    animation: scoreUpdate 0.5s ease !important;
+}
+
+@keyframes scoreUpdate {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Lead Qualification Badge */
+.omion-lead-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 4px 8px !important;
+    border-radius: 12px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.omion-lead-badge.hot {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    color: white !important;
+}
+
+.omion-lead-badge.warm {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: white !important;
+}
+
+.omion-lead-badge.cold {
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+    color: white !important;
+}
+
+.omion-lead-badge.visitor {
+    background: linear-gradient(135deg, #6b7280, #4b5563) !important;
+    color: white !important;
+}
+
+/* Interest Tags */
+.omion-interest-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-top: 8px !important;
+}
+
+.omion-interest-tag {
+    padding: 4px 8px !important;
+    background: rgba(99, 102, 241, 0.1) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    border-radius: 8px !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: #4f46e5 !important;
+    animation: tagAppear 0.3s ease !important;
+}
+
+@keyframes tagAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Lead Dashboard Styles */
+.omion-lead-dashboard {
+    padding: 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    margin: 16px 0 !important;
+}
+
+.omion-dashboard-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1) !important;
+}
+
+.omion-dashboard-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #4f46e5 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.omion-dashboard-stats {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+}
+
+.omion-stat-card {
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+    text-align: center !important;
+}
+
+.omion-stat-number {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #4f46e5 !important;
+    margin-bottom: 4px !important;
+}
+
+.omion-stat-label {
+    font-size: 11px !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.omion-export-button {
+    padding: 8px 16px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.omion-export-button:hover {
+    background: linear-gradient(135deg, #059669, #047857) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Lead List */
+.omion-lead-list {
+    margin-top: 12px !important;
+}
+
+.omion-lead-item {
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+    margin-bottom: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.omion-lead-item:hover {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(99, 102, 241, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+.omion-lead-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 6px !important;
+}
+
+.omion-lead-name {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-size: 13px !important;
+}
+
+.omion-lead-score {
+    font-size: 11px !important;
+    color: #64748b !important;
+}
+
+.omion-lead-details {
+    font-size: 11px !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .omion-email-capture-form {
+        margin: 12px 0 !important;
+        padding: 16px !important;
+    }
+
+    .omion-capture-buttons {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .omion-capture-submit,
+    .omion-capture-skip {
+        width: 100% !important;
+    }
+
+    .omion-dashboard-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .omion-stat-card {
+        padding: 8px !important;
+    }
+
+    .omion-stat-number {
+        font-size: 16px !important;
+    }
+
+    .omion-dashboard-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: flex-start !important;
+    }
+}
+
+/* Animation for lead notifications */
+.omion-lead-notification {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    padding: 12px 16px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3) !important;
+    z-index: 1000000 !important;
+    animation: notificationSlide 0.5s ease !important;
+    max-width: 300px !important;
+}
+
+@keyframes notificationSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Progress Bar for Lead Score */
+.omion-lead-progress {
+    width: 100% !important;
+    height: 4px !important;
+    background: rgba(99, 102, 241, 0.1) !important;
+    border-radius: 2px !important;
+    overflow: hidden !important;
+    margin: 8px 0 !important;
+}
+
+.omion-lead-progress-bar {
+    height: 100% !important;
+    background: linear-gradient(90deg, #4f46e5, #6366f1) !important;
+    border-radius: 2px !important;
+    transition: width 0.5s ease !important;
+    position: relative !important;
+}
+
+.omion-lead-progress-bar::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    animation: progressShine 2s infinite !important;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* APPEND THIS TO YOUR EXISTING chat-widget.css FILE */
+
+/* Fix for missing icon colors */
+#omionSoundToggle svg,
+#omionDarkModeToggle svg,
+.omion-copy-btn svg,
+.omion-reaction-btn svg {
+    stroke: currentColor !important;
+    color: inherit !important;
+}
+
+#omionSoundToggle,
+#omionDarkModeToggle {
+    color: white !important;
+}
+
+.omion-copy-btn {
+    color: #64748b !important;
+}
+
+.omion-reaction-btn {
+    color: #64748b !important;
+}
+
+/* Dark mode icon fixes */
+.omion-dark-mode .omion-copy-btn,
+.omion-dark-mode .omion-reaction-btn {
+    color: #94a3b8 !important;
+}
+
+/* Ensure reaction icons are visible */
+.omion-reaction-icon {
+    font-size: 12px !important;
+    line-height: 1 !important;
+}
+
+/* Lead capture form positioning and animation improvements */
+.omion-email-capture-form {
+    margin: 16px 0 !important;
+    padding: 20px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15) !important;
+    animation: captureSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Lead capture loading state */
+.omion-capture-loading {
+    opacity: 0.7 !important;
+    pointer-events: none !important;
+}
+
+.omion-capture-loading .omion-capture-submit {
+    background: linear-gradient(135deg, #94a3b8, #64748b) !important;
+}
+
+/* Lead capture success state */
+.omion-capture-success {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.1)) !important;
+    border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+.omion-capture-success .omion-capture-header {
+    color: #059669 !important;
+}
+
+/* Lead score badge */
+.omion-lead-score-badge {
+    position: absolute !important;
+    top: 0px !important;
+    right: 0px !important;
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: white !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 4px 8px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3) !important;
+    animation: badgePulse 2s ease-in-out infinite !important;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Lead progress indicator */
+.omion-lead-progress {
+    width: 100% !important;
+    height: 4px !important;
+    background: rgba(99, 102, 241, 0.1) !important;
+    border-radius: 2px !important;
+    overflow: hidden !important;
+    margin: 8px 0 !important;
+}
+
+.omion-lead-progress-bar {
+    height: 100% !important;
+    background: linear-gradient(90deg, #4f46e5, #6366f1) !important;
+    border-radius: 2px !important;
+    transition: width 0.5s ease !important;
+    width: 0% !important;
+}
+
+/* Mobile responsiveness for lead capture */
+@media (max-width: 480px) {
+    .omion-email-capture-form {
+        margin: 12px 0 !important;
+        padding: 16px !important;
+    }
+
+    .omion-capture-buttons {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .omion-capture-submit,
+    .omion-capture-skip {
+        width: 100% !important;
+    }
+}
+
+#omionSoundToggle svg,
+#omionDarkModeToggle svg,
+.omion-copy-btn svg,
+.omion-reaction-btn svg {
+    stroke: currentColor !important;
+    color: inherit !important;
+}
+
+#omionSoundToggle,
+#omionDarkModeToggle {
+    color: white !important;
+}
+
+.omion-copy-btn,
+.omion-reaction-btn {
+    color: #64748b !important;
+}
+
+/* Dark mode icon fixes */
+.omion-dark-mode .omion-copy-btn,
+.omion-dark-mode .omion-reaction-btn {
+    color: #94a3b8 !important;
+}
